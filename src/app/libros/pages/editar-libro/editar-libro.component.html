@@ -1,0 +1,99 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> Editar Libro </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #ActualizarLibroForm = "ngForm" (ngSubmit)="cargar()">
+
+    <div class="form-group">
+      <mat-form-field class="half-width">
+        <label> Título </label>
+        <input matInput placeholder= "Ingresar Título" name="titulo" [(ngModel)]="libro.titulo" required />
+        <mat-error *ngIf="ActualizarLibroForm.controls['titulo']?.touched && ActualizarLibroForm.controls['titulo']?.hasError"> El Título es obligatorio</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <label> Idioma </label>
+        <input matInput placeholder= "Ingresar Idioma" name="idioma" [(ngModel)]="libro.idioma" required />
+        <mat-error *ngIf="ActualizarLibroForm.controls['idioma']?.touched && ActualizarLibroForm.controls['idioma']?.hasError"> El Idioma es obligatorio</mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-group">
+
+      <mat-form-field class="full-width">
+        <label> Descripción </label>
+        <textarea matInput placeholder= "Ingresar Descripción" name="descripcion" [(ngModel)]="libro.descripcion" required ></textarea>
+        <mat-error *ngIf="ActualizarLibroForm.controls['descripcion']?.touched && ActualizarLibroForm.controls['descripcion']?.hasError"> La descripción es obligatorio</mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div class="form-group">
+
+      <mat-form-field >
+        <mat-label>Fecha de Lanzamiento</mat-label>
+        <input matInput [matDatepicker]="picker" required name="fecha_lanzamiento" placeholder="Seleccionar Fecha de Lanzamiento" [(ngModel)]="libro.fecha_lanza">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-error *ngIf="ActualizarLibroForm.controls['fecha_lanza']?.touched && ActualizarLibroForm.controls['fecha_lanza']?.hasError"> La fecha es obligatorio</mat-error>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+    </div>
+
+
+    <!--  -->
+
+    <div class="form-group">
+
+      <mat-form-field class="half-width">
+        <label> Páginas </label>
+        <input matInput placeholder= "Ingresar Páginas" name="paginas" [(ngModel)]="libro.paginas" required />
+        <mat-error *ngIf="ActualizarLibroForm.controls['paginas']?.touched && ActualizarLibroForm.controls['paginas']?.hasError"> Las paginas es obligatorio</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width">
+        <label> Portada </label>
+        <input matInput placeholder= "Ingresar Portada" name="portada" [(ngModel)]="libro.portada" required />
+        <mat-error *ngIf="ActualizarLibroForm.controls['portada']?.touched && ActualizarLibroForm.controls['portada']?.hasError"> La portada es obligatorio es obligatorio</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!--  -->
+
+    <div class="form-group">
+      <mat-form-field  style="margin-top: 10px;">
+        <mat-label>Autor</mat-label>
+        <mat-select placeholder= "Ingresar Autor" name="autores" [(ngModel)]="libro.autor.id_autor" required>
+          <mat-option *ngFor="let autor of ListAutores" [value]="autor.id_autor">{{autor.autor}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="margin-top: 10px;">
+        <mat-label>Categoria</mat-label>
+        <mat-select placeholder= "Ingresar Categoria" name="categorias" [(ngModel)]="libro.categoria.id_categoria" required>
+          <mat-option *ngFor="let categoria of ListCategorias" [value]="categoria.id_categoria">{{categoria.categoria}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field style="margin-top: 10px;">
+        <mat-label>Editorial</mat-label>
+        <mat-select placeholder= "Ingresar Editorial" name="editoriales" [(ngModel)]="libro.editorial.id_editorial" required>
+          <mat-option *ngFor="let editorial of ListEditoriales" [value]="editorial.id_editorial">{{editorial.editorial}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+
+      <button mat-raised-button color="primary" (click)="Actualizar()"> Actualizar Libro </button>
+
+    </div>
+
+    </form>
+
+  </mat-card-content>
+
+</mat-card>

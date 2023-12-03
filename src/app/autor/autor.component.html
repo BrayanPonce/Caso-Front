@@ -1,0 +1,56 @@
+<mat-card class="mat-card">
+  <mat-card-header>
+    <mat-card-title> Listado De Autores </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id_autor">
+        <th mat-header-cell *matHeaderCellDef> Nro </th>
+        <td mat-cell *matCellDef="let element">{{ element.id_autor }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="autor">
+        <th mat-header-cell *matHeaderCellDef>Autor</th>
+        <td mat-cell *matCellDef="let element">{{ element.autor }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="['/autores/buscar-autor', element.id_autor]">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Buscar libro"
+              fontIcon="search"
+            >
+            </mat-icon>
+          </a>
+          |
+          <a [routerLink]="['/autores/editar-autor', element.id_autor]">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="edit"
+            >
+            </mat-icon>
+          </a>
+          |
+          <a [routerLink]="['/autores/eliminar-autor', element.id_autor]">
+            <mat-icon
+              aria-hidden="false"
+              aria-label="Example home icon"
+              fontIcon="delete"
+            >
+            </mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,19 @@
+.header-toolbar {
+  background-color: #3f51b5;
+  color: white;
+  .app-title {
+    padding-left: 8rem ;
+  }
+}
+
+.sidebar {
+  background-color: #0e1d71;
+  height: 100%;
+  width: 15rem;
+}
+
+.content-container {
+  height: 100%;
+  border: 2px solid #ddd;
+  min-height: 100vh;
+}

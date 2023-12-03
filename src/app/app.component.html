@@ -1,0 +1,26 @@
+<mat-toolbar class="header-toolbar">
+  <button mat-icon-button (click)="toggleSidebar()"  class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+
+  </button>
+
+  <button mat-raised-button color="primary" routerLink="autores">Autores</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <span class="app-title">CASO</span>
+
+</mat-toolbar>
+
+<mat-drawer-container class="content-container">
+  <mat-drawer mode = "side" [opened] ="sidebarOpen" class="sidebar">
+    <app-sidebar> </app-sidebar>
+
+  </mat-drawer>
+  <mat-drawer-content class="content-container">
+
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

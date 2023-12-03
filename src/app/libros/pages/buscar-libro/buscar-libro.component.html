@@ -1,0 +1,17 @@
+<mat-card class="mat-card">
+  <h1>Libro {{ libros.titulo }}</h1>
+
+  <ng-container *ngIf="libros">
+    <div>
+      {{ libros.id_LIBRO }}
+      {{ libros.fecha_lanza }}
+      {{ libros.idioma }}
+      {{ libros.paginas }}
+      {{ libros.descripcion }}
+      {{ libros.portada }}
+      {{ libros.autor.autor }}
+      {{ libros.categoria.categoria }}
+      {{ libros.editorial.editorial }}
+    </div>
+  </ng-container>
+</mat-card>
